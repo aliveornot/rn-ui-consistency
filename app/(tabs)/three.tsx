@@ -1,23 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function TabOneScreen() {
+export default function TextInherit() {
   return (
     <View style={styles.outerMost}>
       <Text style={styles.descriptionText}>
-        {`- It applies to <Text /> element\n`}
-        {`- Unless position is explicitly set to be 'relative,' top, bottomm, left, right style props are not working\n`}
-        {`\t- This is because the position is set to be 'static' by default, in RN-web\n`}
-        {`\t- But 'static' is NOT allowed in React Native Specification.\n`}
-        {`- You can open this page on aos/ios and web to compare.\n`}
+        {`- Text style props should not be inherited outside the outermost<Text/> Element\n`}
+        {`- In aos/ios, this text is not centered.\n`}
+        {`- In web, however, this text is centered.\n`}
+        {`- This is because textAlign:center is inhereted from the outer <View /> component.\n`}
       </Text>
-      <View style={styles.innerContainer}>
-        <View style={styles.main1}>
-          <Text style={styles.text1}>{`left:20, top:20, (no position)`}</Text>
-        </View>
-        <View style={styles.main1}>
-          <Text style={styles.text2}>{`position:relative, left:20, top:20`}</Text>
-        </View>
-      </View>
     </View>
   );
 }
@@ -29,6 +20,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'black',
     width: 320,
+    textAlign: 'center',
+  },
+  textAlignCenter: {
+    textAlign: 'center',
   },
   descriptionText: { color: 'white' },
   innerContainer: {
