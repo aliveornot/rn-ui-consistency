@@ -1,15 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function TextInherit() {
+  let a = 1;
   return (
-    <View style={styles.outerMost}>
-      <Text style={styles.descriptionText}>
-        {`- Text style props should not be inherited outside the outermost<Text/> Element\n`}
-        {`- In aos/ios, this text is not centered.\n`}
-        {`- In web, however, this text is centered.\n`}
-        {`- This is because textAlign:center is inhereted from the outer <View /> component.\n`}
-      </Text>
-    </View>
+    a === 1 && (
+      <View style={styles.outerMost}>
+        <Text style={styles.descriptionText}>
+          {`- Text style props should not be inherited outside the outermost<Text/> Element\n`}
+          {`- In aos/ios, this text is not centered.\n`}
+          {`- In web, however, this text is centered.\n`}
+          {`- This is because textAlign:center is inhereted from the outer <View /> component.\n`}
+        </Text>
+      </View>
+    )
   );
 }
 
